@@ -232,43 +232,6 @@ function initGalleryEffects() {
     });
 }
 
-// ============================================
-// Floating Hearts
-// ============================================
-
-function initFloatingHearts() {
-    const heartsContainer = document.querySelector('.floating-hearts');
-    if (!heartsContainer) return;
-    
-    const hearts = ['♥', '💕', '💖', '💗', '💝'];
-    
-    function createHeart() {
-        const heart = document.createElement('div');
-        heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-        heart.style.position = 'absolute';
-        heart.style.left = Math.random() * 100 + '%';
-        heart.style.fontSize = (Math.random() * 1 + 1) + 'rem';
-        heart.style.color = '#d4a574';
-        heart.style.opacity = '0.2';
-        heart.style.pointerEvents = 'none';
-        heart.style.animation = `float ${15 + Math.random() * 10}s infinite ease-in-out`;
-        heart.style.animationDelay = Math.random() * 5 + 's';
-        
-        heartsContainer.appendChild(heart);
-        
-        setTimeout(() => {
-            heart.remove();
-        }, 25000);
-    }
-    
-    // Create hearts periodically
-    setInterval(createHeart, 3000);
-    
-    // Create initial hearts
-    for (let i = 0; i < 3; i++) {
-        setTimeout(createHeart, i * 1000);
-    }
-}
 
 // ============================================
 // Parallax Effect
@@ -368,4 +331,5 @@ function createSparkle(x, y) {
         }).onfinish = () => sparkle.remove();
     }
 }
+
 
