@@ -29,47 +29,66 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ============================================
-// Smooth Scrolling
+// Smooth Scrolling with Custom Easing
 // ============================================
+
+// Custom easing function for smooth scrolling
+function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+}
+
+function smoothScrollTo(targetPosition, duration = 1000) {
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    let startTime = null;
+
+    function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+        const ease = easeInOutCubic(progress);
+        
+        window.scrollTo(0, startPosition + distance * ease);
+        
+        if (timeElapsed < duration) {
+            requestAnimationFrame(animation);
+        }
+    }
+    
+    requestAnimationFrame(animation);
+}
 
 function initSmoothScroll() {
     const links = document.querySelectorAll('a[href^="#"]');
-    const ctaButton = document.querySelector('.cta[data-scroll-target]');
+    const scrollButtons = document.querySelectorAll('[data-scroll-target]');
+    
+    function handleScroll(e, target) {
+        e.preventDefault();
+        if (!target) return;
+        
+        const navHeight = document.querySelector('.top-nav').offsetHeight || 0;
+        const targetPosition = target.offsetTop - navHeight;
+        
+        smoothScrollTo(targetPosition, 1200);
+    }
     
     links.forEach(link => {
         link.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
             if (href === '#') return;
             
-            e.preventDefault();
             const target = document.querySelector(href);
-            if (target) {
-                const navHeight = document.querySelector('.top-nav').offsetHeight;
-                const targetPosition = target.offsetTop - navHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
+            handleScroll(e, target);
         });
     });
     
-    if (ctaButton) {
-        ctaButton.addEventListener('click', function() {
+    scrollButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
             const targetId = this.getAttribute('data-scroll-target');
             const target = document.querySelector(targetId);
-            if (target) {
-                const navHeight = document.querySelector('.top-nav').offsetHeight;
-                const targetPosition = target.offsetTop - navHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
+            handleScroll(e, target);
         });
-    }
+    });
 }
 
 // ============================================
@@ -79,18 +98,35 @@ function initSmoothScroll() {
 function initNavbarScroll() {
     const navbar = document.querySelector('.top-nav');
     let lastScroll = 0;
+    let ticking = false;
     
-    window.addEventListener('scroll', function() {
+    function updateNavbar() {
         const currentScroll = window.pageYOffset;
         
-        if (currentScroll > 50) {
+        if (currentScroll > 100) {
+            navbar.classList.add('visible');
             navbar.classList.add('scrolled');
+        } else if (currentScroll > 50) {
+            navbar.classList.add('visible');
+            navbar.classList.remove('scrolled');
         } else {
+            navbar.classList.remove('visible');
             navbar.classList.remove('scrolled');
         }
         
         lastScroll = currentScroll;
+        ticking = false;
+    }
+    
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            window.requestAnimationFrame(updateNavbar);
+            ticking = true;
+        }
     });
+    
+    // Initial check on page load
+    updateNavbar();
 }
 
 // ============================================
