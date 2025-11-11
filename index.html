@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles11.css">
 </head>
 <body>
     <nav class="top-nav">
@@ -74,6 +74,7 @@
             <article class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
+                    <img class="timeline-photo" src="foto/foto2.jpg" alt="Two people meeting for the first time with warm smiles" loading="lazy">
                     <span class="timeline-date">The day we met</span>
                     <h3>When destiny whispered</h3>
                     <p>That spark we felt was the universe introducing two hearts that were always meant to sync.</p>
@@ -82,6 +83,7 @@
             <article class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
+                    <img class="timeline-photo" src="foto/foto3.jpg" alt="Couple exploring a new city together" loading="lazy">
                     <span class="timeline-date">Our first adventure</span>
                     <h3>Laughter echoing through new places</h3>
                     <p>We got lost in the city but found a new layer of trust and joy in each other.</p>
@@ -90,6 +92,7 @@
             <article class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
+                    <img class="timeline-photo" src="foto/foto4.jpg" alt="A heartfelt proposal moment" loading="lazy">
                     <span class="timeline-date">The "Yes" moment</span>
                     <h3>Choosing each other forever</h3>
                     <p>Your smile, your tears, your hand in mine—those seconds still radiate in my heart.</p>
@@ -98,11 +101,25 @@
             <article class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
+                    <img class="timeline-photo" src="foto/foto5.jpg" alt="Writing a love letter at a cozy desk" loading="lazy">
                     <span class="timeline-date">Today</span>
                     <h3>Writing this love letter</h3>
                     <p>Every line is a quiet thank-you for your patience, your light, and your unwavering love.</p>
                 </div>
             </article>
+        </div>
+    </section>
+
+    <section id="sanctuary" class="immersive-panel">
+        <div class="panel-overlay"></div>
+        <div class="panel-content">
+            <span class="panel-tag">Our quiet sanctuary</span>
+            <h2>The moments between the moments are my favorites.</h2>
+            <p>
+                When the world goes silent and it is just us, wrapped in the hush of our living room lights,
+                you resting your head on my shoulder—those are the evenings that teach me how peaceful love can be.
+            </p>
+            <button class="panel-cta" data-scroll-target="#gallery">Relive our snapshots</button>
         </div>
     </section>
 
@@ -113,21 +130,42 @@
         </div>
         <div class="gallery-grid">
             <figure class="gallery-card">
-                <div class="gallery-photo" data-photo="1"></div>
+                <img class="gallery-photo" src="foto/foto2.jpg" alt="Soft morning light coming through the bedroom window" loading="lazy">
                 <figcaption>The soft glow of a Sunday morning, you wrapped in blankets.</figcaption>
             </figure>
             <figure class="gallery-card">
-                <div class="gallery-photo" data-photo="2"></div>
+                <img class="gallery-photo" src="foto/foto3.jpg" alt="Couple laughing together over coffee" loading="lazy">
                 <figcaption>Our inside jokes that make the whole world disappear.</figcaption>
             </figure>
             <figure class="gallery-card">
-                <div class="gallery-photo" data-photo="3"></div>
+                <img class="gallery-photo" src="foto/foto4.jpg" alt="Holding hands closely" loading="lazy">
                 <figcaption>Your hand finding mine in a crowded room, still my favorite feeling.</figcaption>
             </figure>
             <figure class="gallery-card">
-                <div class="gallery-photo" data-photo="4"></div>
+                <img class="gallery-photo" src="foto/foto5.jpg" alt="Confetti celebrating a milestone" loading="lazy">
                 <figcaption>The triumphs we celebrate quietly, knowing we built them together.</figcaption>
             </figure>
+            <figure class="gallery-card">
+                <img class="gallery-photo" src="foto/foto1.jpg" alt="Two passports and plans for future adventures" loading="lazy">
+                <figcaption>Maps, tickets, and plans sprawled on the table—our next adventure taking shape.</figcaption>
+            </figure>
+            <figure class="gallery-card">
+                <img class="gallery-photo" src="foto/foto2.jpg" alt="Cozy evening at home with candles" loading="lazy">
+                <figcaption>Quiet evenings at home, playlists softly playing while we dream together.</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section id="adventure" class="immersive-panel immersive-panel--evening">
+        <div class="panel-overlay"></div>
+        <div class="panel-content">
+            <span class="panel-tag">Our next getaway</span>
+            <h2>Every destination feels brighter with your hand in mine.</h2>
+            <p>
+                From airport coffees to sunrise hikes, from shared playlists to whispered plans, being beside you turns
+                any place into home. I cannot wait to discover where we fall in love all over again next.
+            </p>
+            <button class="panel-cta" data-scroll-target="#future">Dream ahead with me</button>
         </div>
     </section>
 
@@ -205,4 +243,3 @@
     <script src="main.js" defer></script>
 </body>
 </html>
-
